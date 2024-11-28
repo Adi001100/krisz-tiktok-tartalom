@@ -1,0 +1,33 @@
+header {
+  position: fixed; 
+  top: 0; 
+  left: 0;
+  width: 100%; 
+  z-index: 1000; 
+  padding: 0 0 10px 0; 
+  background-color: transparent;
+}
+
+.container {
+  justify-content: flex-end;
+}
+
+.contact p {
+  font-size: 1.3rem;
+  color: black;
+  background-color: grey;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact p:hover {
+  transform: translateY(5px);
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+}
+
+a {
+  text-decoration: overline;
+  color: inherit;
+}
