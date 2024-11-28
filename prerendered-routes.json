@@ -1,0 +1,11 @@
+{
+  "routes": [
+    "/",
+    "/about",
+    "/contact",
+    "/gyik",
+    "/packages",
+    "/portfolio",
+    "/services"
+  ]
+}
