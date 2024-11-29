@@ -13,10 +13,4 @@ import { AppComponent } from '../../app.component';
 })
 export class HeaderComponent {
   mail = 'www.viralize@gmail.com';
-
-  constructor(private viewportScroller: ViewportScroller) { }
-
-  scrollToSection(sectionId: string): void {
-    this.viewportScroller.scrollToAnchor(sectionId);
-  }
 }

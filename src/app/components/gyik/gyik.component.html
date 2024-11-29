@@ -1,1 +1,14 @@
-<p>gyik works!</p>
+<div class="container">
+    <div class="faq-container">
+        <h1>Gyakran Ismételt Kérdések</h1>
+        <div class="faq-item" *ngFor="let faq of faqs; let i = index">
+            <div class="faq-question" (click)="toggleFAQ(i)">
+                <h2>{{ faq.question }}</h2>
+                <span [class.open]="faq.isOpen">+</span>
+            </div>
+            <div class="faq-answer" *ngIf="faq.isOpen">
+                <p>{{ faq.answer }}</p>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+.container {
+    display: block;
+    text-align: center;
+    padding: 2rem 1rem;
+}
+
+.work-options {
+    display: grid;
+    gap: 4vh;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin: 4rem auto 2rem auto;
+    color: #fff;
+}
+
+.work {
+    display: grid;
+    justify-self: center;
+    width: 1000px;
+    grid-template-columns: 1fr 1fr;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    margin: 0;
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+}
+
+.work:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+}
+
+.work .icon img {
+    width: 80px;
+    height: auto;
+    margin-bottom: 1rem;
+}
+
+.work h2 {
+    background: #ff007f;
+    border-radius: 50px;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+}
+
+.work p {
+    font-size: 1rem;
+    max-width: 300px;
+    text-align: center;
+}
+
+.contact {
+    margin-top: 2rem;
+    font-size: 1rem;
+    opacity: 0.8;
+}

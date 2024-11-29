@@ -1,1 +1,8 @@
-<p>portfolio works!</p>
+<div class="slider-container">
+    <div class="slider" [style.transform]="'translateX(-' + currentIndex * 375 + 'px)'"
+        [style.transition]="'transform 0.5s ease-in-out'">
+        <div class="slide" *ngFor="let svg of svgs">
+            <img [src]="svg" alt="Slider SVG">
+        </div>
+    </div>
+</div>

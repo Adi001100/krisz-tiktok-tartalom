@@ -10,11 +10,12 @@ import { PortfolioComponent } from "./components/portfolio/portfolio.component";
 import { GyikComponent } from "./components/gyik/gyik.component";
 import { ContactComponent } from "./components/contact/contact.component";
 import { ViewportScroller } from '@angular/common';
+import { HowWeWorkComponent } from "./components/how-we-work/how-we-work.component";
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent, FooterComponent, HomeComponent, ServicesComponent, AboutComponent, PackagesComponent, PortfolioComponent, GyikComponent, ContactComponent],
+  imports: [RouterOutlet, HeaderComponent, FooterComponent, HomeComponent, ServicesComponent, AboutComponent, PackagesComponent, PortfolioComponent, GyikComponent, ContactComponent, HowWeWorkComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

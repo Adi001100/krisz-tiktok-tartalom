@@ -1,1 +1,36 @@
-<p id="contact">contact works!</p>
+<div id="kapcsolat" class="container">
+    <div class="contact-container">
+      <h1>Kapcsolat</h1>
+      <form (ngSubmit)="onSubmit()" #contactForm="ngForm">
+        <div class="form-group">
+          <label for="name">Név:</label>
+          <input type="text" id="name" [(ngModel)]="name" name="name" required placeholder="Add meg a neved" />
+        </div>
+        <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" [(ngModel)]="email" name="email" required placeholder="Add meg az email címed" />
+        </div>
+        <div class="form-group">
+          <label for="message">Üzenet:</label>
+          <textarea id="message" [(ngModel)]="message" name="message" rows="5" placeholder="Írd meg az üzeneted"></textarea>
+        </div>
+        <div class="form-group">
+          <label>Válasszon egy opciót:</label>
+          <div *ngFor="let option of options" class="option" [class.selected]="selectedOption === option" (click)="selectOption(option)">
+            {{ option }}
+          </div>
+        </div>
+        <button type="submit" [disabled]="!contactForm.form.valid || !selectedOption">
+            Küldés
+        </button>
+      </form>
+    </div>
+    
+    <app-popup
+      [title]="responseTitle"
+      [message]="responseMessage"
+      [isVisible]="isPopupVisible"
+      (closePopup)="closePopup()">
+    </app-popup>
+  </div>
+  

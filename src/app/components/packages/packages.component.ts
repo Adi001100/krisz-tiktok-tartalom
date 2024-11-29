@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './packages.component.css'
 })
 export class PackagesComponent {
-
+  scrollToSection() {
+    const element = document.getElementById('kapcsolat');
+    if (element) {
+      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }
 }
