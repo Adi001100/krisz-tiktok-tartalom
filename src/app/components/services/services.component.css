@@ -25,6 +25,7 @@ h1 {
     justify-items: center;
     margin: 0;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 .service:hover {
@@ -110,5 +111,14 @@ h1 {
 
     .service p {
         font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 1171px) {
+    .service {
+        padding: 1rem 0 1rem 0;
+        background-color: #ffffff21;
+        backdrop-filter: blur(8px);
+        border-radius: 10px;
     }
 }

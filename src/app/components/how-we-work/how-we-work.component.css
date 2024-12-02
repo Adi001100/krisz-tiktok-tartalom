@@ -25,6 +25,7 @@ h1 {
     justify-items: center;
     margin: 0;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
 }
 
 .work:hover {
@@ -79,6 +80,23 @@ h1 {
     }
 }
 
+@media (max-width: 1042px) {
+    .work {
+        width: 90%;
+        grid-template-columns: 1fr;
+    }
+
+    .item1 {
+        order: 2;
+    }
+
+    .item2 {
+        order: 1;
+    }
+}
+
+
+
 @media (max-width: 576px) {
     .work {
         width: 100%;
@@ -95,5 +113,14 @@ h1 {
 
     .work p {
         font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 1171px) {
+    .work {
+        padding: 1rem 0 1rem 0;
+        background-color: #ffffff21;
+        backdrop-filter: blur(8px);
+        border-radius: 10px;
     }
 }

@@ -12,6 +12,7 @@ export class PopupComponent {
   @Input() title: string = 'Üzenet';
   @Input() message: string = '';
   @Input() isVisible: boolean = false;
+  @Input() isSuccess: boolean = true;
   
   @Output() closePopup = new EventEmitter<void>();
 

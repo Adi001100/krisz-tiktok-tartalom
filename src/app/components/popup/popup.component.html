@@ -1,7 +1,7 @@
 <div class="popup-backdrop" *ngIf="isVisible">
-    <div class="popup-content">
-      <h2>{{ title }}</h2>
-      <p>{{ message }}</p>
-      <button (click)="close()">OK</button>
-    </div>
+  <div class="popup-content" [ngClass]="isSuccess ? 'success' : 'error'">
+    <h2>{{ title }}</h2>
+    <p>{{ message }}</p>
+    <button (click)="close()">OK</button>
   </div>
+</div>

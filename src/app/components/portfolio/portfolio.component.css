@@ -22,18 +22,40 @@
   border-radius: 20px;
 }
 
+button {
+  border: none;
+  border-radius: 10px;
+  font-size: 2rem;
+  cursor: pointer;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  color: #ff007f;
+  background-color: #ffffff21;
+  backdrop-filter: blur(8px);
+}
+
+.prev-button {
+  left: 10px;
+}
+
+.next-button {
+  right: 10px;
+}
+
 @media (max-width: 768px) {
   .slide {
-      min-width: 300px;
+    min-width: 300px;
   }
 }
 
 @media (max-width: 576px) {
   .slide {
-      min-width: 100%;
+    min-width: 100%;
   }
 
   .slider img {
-      border-radius: 10px;
+    border-radius: 10px;
   }
 }

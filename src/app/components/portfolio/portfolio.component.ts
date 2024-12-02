@@ -1,5 +1,5 @@
 import { CommonModule, isPlatformBrowser } from '@angular/common';
-import { ChangeDetectionStrategy, Component, Inject, PLATFORM_ID } from '@angular/core';
+import { Component, Inject, PLATFORM_ID } from '@angular/core';
 
 @Component({
   selector: 'app-portfolio',
@@ -20,40 +20,68 @@ export class PortfolioComponent {
     'assets/8.svg',
     'assets/9.svg'
   ];
+  extendedSvgs: string[] = [];
   currentIndex: number = 0;
-  direction: number = 1; // 1: előre, -1: vissza
-  visibleSlides: number = 0;
+  transitionEnabled: boolean = true;
+  intervalId: any;
 
   constructor(@Inject(PLATFORM_ID) private platformId: object) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      this.updateVisibleSlides();
+      // Duplázd meg az SVG listát a végtelen görgetéshez
+      this.extendedSvgs = [...this.svgs, ...this.svgs];
 
-      setInterval(() => {
-        this.nextSlide();
-      }, 2000);
-
-      window.addEventListener('resize', () => {
-        this.updateVisibleSlides();
-      });
+      // Indítsd el az automatikus görgetést
+      this.startAutoScroll();
     }
   }
 
-  updateVisibleSlides(): void {
-    this.visibleSlides = Math.floor(window.innerWidth / 375) + 1; // 375px szélességű képek
+  // Automatikus görgetés
+  startAutoScroll(): void {
+    this.intervalId = setInterval(() => {
+      this.nextSlide();
+    }, 3000); // 3 másodperces intervallum
   }
 
+  // Állítsd le az automatikus görgetést
+  stopAutoScroll(): void {
+    clearInterval(this.intervalId);
+  }
+
+  // Következő dia
   nextSlide(): void {
-    const maxIndex = this.svgs.length - this.visibleSlides;
+    this.currentIndex++;
 
-    if (this.currentIndex >= maxIndex) {
-      this.direction = -1; // Visszafele mozog
+    // Ha eléri a lista végét, ugrik az elejére
+    if (this.currentIndex >= this.svgs.length) {
+      setTimeout(() => {
+        this.transitionEnabled = false;
+        this.currentIndex = 0;
+      }, 500);
+    } else {
+      this.transitionEnabled = true;
     }
-    if (this.currentIndex <= 0) {
-      this.direction = 1; // Előrefele mozog
-    }
+  }
 
-    this.currentIndex += this.direction;
+  // Előző dia
+  prevSlide(): void {
+    this.currentIndex--;
+
+    // Ha visszateker az elejére, ugrik a lista végére
+    if (this.currentIndex < 0) {
+      setTimeout(() => {
+        this.transitionEnabled = false;
+        this.currentIndex = this.svgs.length - 1;
+      }, 500);
+    } else {
+      this.transitionEnabled = true;
+    }
+  }
+
+  // Manuális irányítás (gombok)
+  onManualControl(): void {
+    this.stopAutoScroll(); // Állítsd le az automatikus görgetést
+    this.startAutoScroll(); // Indítsd újra, hogy a felhasználó irányítása után folytassa
   }
 }

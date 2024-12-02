@@ -19,6 +19,21 @@
   backdrop-filter: blur(3px);
   text-align: center;
   width: 300px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.popup-content.success h2 {
+  background-color: #4caf4f96; /* Zöld háttér siker esetén */
+  backdrop-filter: blur(3px);
+  border-radius: 5px;
+  color: white;
+}
+
+.popup-content.error h2 {
+  background-color: rgba(255, 0, 0, 0.684); /* Piros háttér hiba esetén */
+  backdrop-filter: blur(3px);
+  border-radius: 5px;
+  color: white;
 }
 
 button {
@@ -39,12 +54,12 @@ button:hover {
 
 @media (max-width: 576px) {
   .popup-content {
-      width: 90%;
-      padding: 15px;
+    width: 90%;
+    padding: 15px;
   }
 
   button {
-      padding: 8px 16px;
-      font-size: 14px;
+    padding: 8px 16px;
+    font-size: 14px;
   }
 }

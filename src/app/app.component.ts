@@ -79,20 +79,15 @@ export class AppComponent {
       }
   
       if (availableSrcs.length === 0) {
-        console.error('Nincs elég elérhető src érték.');
         return { ...img };
       }
   
-      // Véletlenszerű érték kiválasztása
       const randomIndex = Math.floor(Math.random() * availableSrcs.length);
       const randomSrc = availableSrcs[randomIndex];
   
-      // Használat után eltávolítjuk a listából
       availableSrcs.splice(randomIndex, 1);
   
       return { ...img, src: randomSrc };
     });
-  
-    console.log('Frissített images:', this.images);
   }
 }
