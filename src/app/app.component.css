@@ -1,0 +1,28 @@
+.main-container {
+    position: relative;
+    width: 100%;
+    min-height: 100vh; /* A teljes képernyőt kitölti */
+  }
+  
+  .background-images {
+    position: absolute; /* A képek a szülőhöz viszonyítva helyezkednek el */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  
+  .scrolling-image {
+    position: absolute;
+    width: 12.5rem;
+    height: auto;
+    transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+    will-change: opacity, transform;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 1000;
+  }
+
+  

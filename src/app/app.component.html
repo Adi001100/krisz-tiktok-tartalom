@@ -1,10 +1,24 @@
-<app-header></app-header>
-<app-home></app-home>
-<app-services></app-services>
-<app-about></app-about>
-<app-how-we-work></app-how-we-work>
-<app-packages></app-packages>
-<app-portfolio></app-portfolio>
-<app-contact></app-contact>
-<app-gyik></app-gyik>
-<app-footer></app-footer>
+<div class="main-container">
+  <div class="background-images">
+    <img *ngFor="let img of images"
+         [src]="img.src"
+         [alt]="img.alt"
+         class="scrolling-image"
+         [style.top]="img.top"
+         [style.left]="img.left"
+         [style.width]="img.width">
+  </div>
+
+  <div class="content">
+    <app-header></app-header>
+    <app-home></app-home>
+    <app-services></app-services>
+    <app-about></app-about>
+    <app-how-we-work></app-how-we-work>
+    <app-packages></app-packages>
+    <app-portfolio></app-portfolio>
+    <app-contact></app-contact>
+    <app-gyik></app-gyik>
+    <app-footer></app-footer>
+  </div>
+</div>

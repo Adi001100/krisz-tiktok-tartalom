@@ -6,30 +6,30 @@
 }
 
 .packages-title {
-    font-size: 2.5em; 
+    font-size: 2.5em;
     font-weight: bold;
     color: white;
-    text-align: center; 
-    margin-bottom: 30px; 
+    text-align: center;
+    margin-bottom: 30px;
 }
 
 .packages-container {
     display: flex;
     gap: 20px;
-    justify-content: center; 
+    justify-content: center;
     flex-wrap: wrap;
 }
 
 .package {
-    background-color: #ffffff0f;
-    backdrop-filter: blur(1px);
+    background-color: #ffffff21;
+    backdrop-filter: blur(8px);
     color: white;
     border-radius: 10px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 1);
     text-align: center;
     padding: 20px;
     max-width: 300px;
-    flex: 1 1 320px; 
+    flex: 1 1 320px;
     height: 700px;
     display: flex;
     flex-direction: column;
@@ -57,7 +57,7 @@
     font-size: 0.9em;
 }
 
-a{
+a {
     text-decoration: none;
     background-color: #ff6f61;
     border-radius: 5px;
@@ -77,20 +77,48 @@ a{
     text-decoration: none;
     cursor: pointer;
     transition: background-color 0.3s ease;
-  }
-  
-  .button:hover {
+}
+
+.button:hover {
     background-color: #0056b3;
-  }
-  
+}
 
 @media (max-width: 768px) {
     .packages-container {
         flex-direction: column;
         align-items: center;
     }
+
     .package {
         max-width: 90%;
         height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .packages-title {
+        font-size: 2em;
+    }
+
+    .package {
+        padding: 15px;
+    }
+
+    .package h2 {
+        font-size: 1.3em;
+    }
+
+    .package p {
+        font-size: 1em;
+    }
+
+    .package ul li {
+        margin: 5vh 0;
+        font-size: 0.8em;
+    }
+
+    .button {
+        font-size: 14px;
+        padding: 8px 16px;
     }
 }

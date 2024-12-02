@@ -7,6 +7,7 @@ import { PackagesComponent } from './components/packages/packages.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { ServicesComponent } from './components/services/services.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -16,15 +17,17 @@ export const routes: Routes = [
   { path: 'portfolio', component: PortfolioComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'gyik', component: GyikComponent },
+  { path: '**', redirectTo: '' } // Wildcard route az ismeretlen útvonalak kezelésére
 ];
 
 @NgModule({
   imports: [
     RouterModule.forRoot(routes, {
-      anchorScrolling: 'enabled', 
+      anchorScrolling: 'enabled',
       scrollPositionRestoration: 'enabled',
     }),
   ],
   exports: [RouterModule],
+  providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }]
 })
 export class AppRoutingModule {}

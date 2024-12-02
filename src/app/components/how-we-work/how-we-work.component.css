@@ -59,3 +59,41 @@ h1 {
     font-size: 1rem;
     opacity: 0.8;
 }
+
+@media (max-width: 768px) {
+    .work {
+        width: 90%;
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    .work .icon img {
+        width: 60px;
+    }
+
+    .work p {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .work {
+        width: 100%;
+        grid-template-columns: 1fr;
+    }
+
+    h1 {
+        font-size: 1.8rem;
+    }
+
+    .work .icon img {
+        width: 50px;
+    }
+
+    .work p {
+        font-size: 0.8rem;
+    }
+}

@@ -23,7 +23,6 @@ img {
     width: 52vw;
     display: flex;
     justify-content: flex-end;
-
 }
 
 .tagline p {
@@ -44,8 +43,7 @@ h3 {
 .highlight {
     color: #d51087;
     font-weight: bold;
-    text-shadow: 
-    0px  0px 5px grey;
+    text-shadow: 0px 0px 5px grey;
 }
 
 .description {
@@ -59,4 +57,74 @@ h3 {
     line-height: 1.4;
     font-weight: 100;
     width: 60vw;
+}
+
+@media (max-width: 576px) {
+    img {
+        width: 15rem;
+        height: 15rem;
+    }
+
+    .tagline {
+        width: 80vw;
+    }
+
+    .tagline p {
+        font-size: 2.5vh;
+    }
+
+    h3 {
+        font-size: 2rem;
+    }
+
+    .description {
+        font-size: 1.2rem;
+        width: 90vw;
+        padding-top: 5vh;
+    }
+}
+
+@media (max-width: 768px) {
+    img {
+        width: 20rem;
+        height: 20rem;
+    }
+
+    .tagline {
+        width: 70vw;
+    }
+
+    .tagline p {
+        font-size: 2.7vh;
+    }
+
+    h3 {
+        font-size: 2.5rem;
+    }
+
+    .description {
+        font-size: 1.3rem;
+        width: 80vw;
+        padding-top: 6vh;
+    }
+}
+
+@media (max-width: 992px) {
+    img {
+        width: 22rem;
+        height: 22rem;
+    }
+
+    .tagline {
+        width: 65vw;
+    }
+
+    h3 {
+        font-size: 2.8rem;
+    }
+
+    .description {
+        font-size: 1.4rem;
+        width: 70vw;
+    }
 }
