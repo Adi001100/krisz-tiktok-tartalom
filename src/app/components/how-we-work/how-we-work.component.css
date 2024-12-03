@@ -50,7 +50,7 @@ h1 {
 }
 
 .work p {
-    font-size: 1rem;
+    font-size: 1.2rem;
     max-width: 300px;
     text-align: center;
 }
@@ -73,10 +73,6 @@ h1 {
 
     .work .icon img {
         width: 60px;
-    }
-
-    .work p {
-        font-size: 0.9rem;
     }
 }
 
@@ -109,10 +105,6 @@ h1 {
 
     .work .icon img {
         width: 50px;
-    }
-
-    .work p {
-        font-size: 0.8rem;
     }
 }
 

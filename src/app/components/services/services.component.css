@@ -26,6 +26,7 @@ h1 {
     margin: 0;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
+    padding: ;
 }
 
 .service:hover {
@@ -50,9 +51,8 @@ h1 {
 }
 
 .service .icon img {
-    width: 80px;
+    width: 6rem;
     height: auto;
-    margin-bottom: 1rem;
 }
 
 .service h2 {
@@ -79,15 +79,11 @@ h1 {
 @media (max-width: 768px) {
     .service {
         width: 90%;
-        grid-template-columns: 1fr;
+
     }
 
     h1 {
         font-size: 2rem;
-    }
-
-    .service .icon img {
-        width: 60px;
     }
 
     .service p {
@@ -98,15 +94,11 @@ h1 {
 @media (max-width: 576px) {
     .service {
         width: 100%;
-        grid-template-columns: 1fr;
+
     }
 
     h1 {
         font-size: 1.8rem;
-    }
-
-    .service .icon img {
-        width: 50px;
     }
 
     .service p {
@@ -116,7 +108,7 @@ h1 {
 
 @media (max-width: 1171px) {
     .service {
-        padding: 1rem 0 1rem 0;
+        padding: 1rem;
         background-color: #ffffff21;
         backdrop-filter: blur(8px);
         border-radius: 10px;

@@ -28,7 +28,9 @@ img {
 .tagline p {
     font-size: 3vh;
     margin: 0 0 10px 0;
+    padding: 0.3rem;
     background-color: #d51087;
+    border-radius: 5px;
 }
 
 h3 {
@@ -117,6 +119,9 @@ h3 {
 
     .tagline {
         width: 65vw;
+        display: block;
+        justify-self: center;
+        text-align: center;
     }
 
     h3 {
