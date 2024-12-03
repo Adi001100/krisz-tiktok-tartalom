@@ -57,7 +57,7 @@ export class ContactComponent {
     this.http.post('http://localhost/php-mailer/EmailSender.php', payload, { responseType: 'json' }).subscribe(
       (response: any) => {
         if (response.status === 'success') {
-          this.showPopup('Sikeres küldés', 'Üzenetét sikeresen elküldtük!', true);
+          this.showPopup('Sikeres küldés', 'Üzenetét sikeresen elküldtük! Hamarosan felvesszük önnel a kapcsolatot', true);
           setTimeout(() => {
             this.resetForm();
             this.closePopup();

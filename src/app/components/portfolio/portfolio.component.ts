@@ -6,7 +6,7 @@ import { Component, Inject, PLATFORM_ID } from '@angular/core';
   standalone: true,
   imports: [CommonModule],
   templateUrl: './portfolio.component.html',
-  styleUrl: './portfolio.component.css'
+  styleUrls: ['./portfolio.component.css']
 })
 export class PortfolioComponent {
   svgs: string[] = [
@@ -21,67 +21,112 @@ export class PortfolioComponent {
     'assets/9.svg'
   ];
   extendedSvgs: string[] = [];
-  currentIndex: number = 0;
-  transitionEnabled: boolean = true;
-  intervalId: any;
+  position: number = 0;
+  speed: number = 2;
+  slideWidth: number = 375;
+  animationFrameId: any = null;
+  restartTimeoutId: any = null;
+  restartDelay: number = 3000;
+
+  touchStartX: number = 0; // Az érintés kezdő X-koordinátája
+  touchEndX: number = 0;   // Az érintés végső X-koordinátája
+  swipeThreshold: number = 50; // Minimális távolság a swipe érzékeléshez
 
   constructor(@Inject(PLATFORM_ID) private platformId: object) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
-      // Duplázd meg az SVG listát a végtelen görgetéshez
       this.extendedSvgs = [...this.svgs, ...this.svgs];
-
-      // Indítsd el az automatikus görgetést
       this.startAutoScroll();
     }
   }
 
-  // Automatikus görgetés
   startAutoScroll(): void {
-    this.intervalId = setInterval(() => {
-      this.nextSlide();
-    }, 3000); // 3 másodperces intervallum
+    if (this.animationFrameId) {
+      return;
+    }
+    const scroll = () => {
+      this.position -= this.speed;
+
+      const resetThreshold = this.svgs.length * this.slideWidth;
+      if (Math.abs(this.position) >= resetThreshold) {
+        this.position = 0;
+      }
+
+      this.animationFrameId = requestAnimationFrame(scroll);
+    };
+
+    this.animationFrameId = requestAnimationFrame(scroll);
   }
 
-  // Állítsd le az automatikus görgetést
   stopAutoScroll(): void {
-    clearInterval(this.intervalId);
-  }
-
-  // Következő dia
-  nextSlide(): void {
-    this.currentIndex++;
-
-    // Ha eléri a lista végét, ugrik az elejére
-    if (this.currentIndex >= this.svgs.length) {
-      setTimeout(() => {
-        this.transitionEnabled = false;
-        this.currentIndex = 0;
-      }, 500);
-    } else {
-      this.transitionEnabled = true;
+    if (this.animationFrameId) {
+      cancelAnimationFrame(this.animationFrameId);
+      this.animationFrameId = null;
     }
   }
 
-  // Előző dia
+  restartAutoScroll(): void {
+    if (this.restartTimeoutId) {
+      clearTimeout(this.restartTimeoutId);
+    }
+
+    this.restartTimeoutId = setTimeout(() => {
+      this.startAutoScroll();
+    }, this.restartDelay);
+  }
+
   prevSlide(): void {
-    this.currentIndex--;
+    this.stopAutoScroll();
+    this.position += this.slideWidth;
 
-    // Ha visszateker az elejére, ugrik a lista végére
-    if (this.currentIndex < 0) {
-      setTimeout(() => {
-        this.transitionEnabled = false;
-        this.currentIndex = this.svgs.length - 1;
-      }, 500);
-    } else {
-      this.transitionEnabled = true;
+    const maxPosition = -(this.svgs.length * this.slideWidth);
+    if (this.position > 0) {
+      this.position = maxPosition + this.slideWidth;
     }
+
+    this.restartAutoScroll();
   }
 
-  // Manuális irányítás (gombok)
-  onManualControl(): void {
-    this.stopAutoScroll(); // Állítsd le az automatikus görgetést
-    this.startAutoScroll(); // Indítsd újra, hogy a felhasználó irányítása után folytassa
+  nextSlide(): void {
+    this.stopAutoScroll();
+    this.position -= this.slideWidth;
+
+    const resetThreshold = -(this.svgs.length * this.slideWidth);
+    if (this.position <= resetThreshold) {
+      this.position = 0;
+    }
+
+    this.restartAutoScroll();
+  }
+
+  onTouchStart(event: TouchEvent): void {
+    this.stopAutoScroll();
+    this.touchStartX = event.touches[0].clientX;
+  }
+
+  onTouchMove(event: TouchEvent): void {
+    this.touchEndX = event.touches[0].clientX;
+  }
+
+  onTouchEnd(): void {
+    const distance = this.touchEndX - this.touchStartX;
+
+    if (Math.abs(distance) > this.swipeThreshold) {
+      if (distance > 0) {
+        this.prevSlide();
+      } else {
+        this.nextSlide();
+      }
+    }
+
+    this.restartAutoScroll();
+  }
+
+  ngOnDestroy(): void {
+    this.stopAutoScroll();
+    if (this.restartTimeoutId) {
+      clearTimeout(this.restartTimeoutId);
+    }
   }
 }

@@ -1,11 +1,12 @@
-<div class="slider-container">
-    <button class="prev-button" (click)="prevSlide(); onManualControl()">&#8592;</button>
-    <div class="slider" [style.transform]="'translateX(-' + currentIndex * 375 + 'px)'"
-         [style.transition]="transitionEnabled ? 'transform 0.5s ease-in-out' : 'none'">
-      <div class="slide" *ngFor="let svg of extendedSvgs">
-        <img [src]="svg" alt="Slider SVG">
-      </div>
+<div class="slider-container"
+     (touchstart)="onTouchStart($event)"
+     (touchmove)="onTouchMove($event)"
+     (touchend)="onTouchEnd()">
+  <button class="prev-button" (click)="prevSlide()">&#8592;</button>
+  <div class="slider" [style.transform]="'translateX(' + position + 'px)'">
+    <div class="slide" *ngFor="let svg of extendedSvgs">
+      <img [src]="svg" alt="Slider SVG">
     </div>
-    <button class="next-button" (click)="nextSlide(); onManualControl()">&#8594;</button>
   </div>
-  
+  <button class="next-button" (click)="nextSlide()">&#8594;</button>
+</div>

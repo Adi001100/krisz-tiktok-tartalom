@@ -7,7 +7,7 @@
 
 .slider {
   display: flex;
-  transition: transform 0.5s ease-in-out;
+  transition: transform 0s linear;
 }
 
 .slide {
@@ -53,6 +53,10 @@ button {
 @media (max-width: 576px) {
   .slide {
     min-width: 100%;
+  }
+
+  button {
+    display: none;
   }
 
   .slider img {

@@ -9,7 +9,7 @@ import { PackagesComponent } from "./components/packages/packages.component";
 import { PortfolioComponent } from "./components/portfolio/portfolio.component";
 import { GyikComponent } from "./components/gyik/gyik.component";
 import { ContactComponent } from "./components/contact/contact.component";
-import { CommonModule, ViewportScroller } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { HowWeWorkComponent } from "./components/how-we-work/how-we-work.component";
 
 @Component({
